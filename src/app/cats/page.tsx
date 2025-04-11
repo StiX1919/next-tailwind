@@ -4,39 +4,20 @@ import { useState } from "react";
 import "./cats.css"
 
 export default function Home() {
-    const [cat, setCat] = useState('')
+    const [currCat, setCat] = useState('')
 
     // function, request cats
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
     const request = new Request("https://cataas.com/cat", {
-        headers: {}
+        headers: {accept: "application/json"}
     });
     const getCat = async () => {
         try {
             const cat = await (await fetch(request)).json()
             console.log('hit', cat)
-            // setCat(cat)
+            setCat(cat.url)
         } catch (error){
             console.log(error)
         }
-        // fetch(request)
-        //     .then((response) => {
-        //         if (response.status === 200) {
-        //             console.log(response.blob)
-        //         // return response.json();
-        //         } else {
-        //             throw new Error("Something went wrong on API server!");
-        //         }
-        //     })
-        //     .then((response) => {
-        //         console.log(response)
-        //         console.debug(response);
-        //         // …
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        // });
     }
 
 
@@ -54,7 +35,7 @@ export default function Home() {
                 >Find a Cat</button>
             </div>
             <div>
-                
+                <img src={currCat}/>
             </div>
         </div>
     </main>
