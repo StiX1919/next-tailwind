@@ -1,6 +1,45 @@
+"use client"
+
+import { useState } from "react";
 import "./cats.css"
 
 export default function Home() {
+    const [cat, setCat] = useState('')
+
+    // function, request cats
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const request = new Request("https://cataas.com/cat", {
+        headers: {}
+    });
+    const getCat = async () => {
+        try {
+            const cat = await (await fetch(request)).json()
+            console.log('hit', cat)
+            // setCat(cat)
+        } catch (error){
+            console.log(error)
+        }
+        // fetch(request)
+        //     .then((response) => {
+        //         if (response.status === 200) {
+        //             console.log(response.blob)
+        //         // return response.json();
+        //         } else {
+        //             throw new Error("Something went wrong on API server!");
+        //         }
+        //     })
+        //     .then((response) => {
+        //         console.log(response)
+        //         console.debug(response);
+        //         // …
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        // });
+    }
+
+
   return (
     <main className="flex flex-col gap-[32px] items-center">
         <div>
@@ -9,7 +48,10 @@ export default function Home() {
             <div className="flex flex-col p-5 bg-(--background)">
                 <input className="rounded-sm" type="text" placeholder="Search"></input>
                 <input className="rounded-sm my-2" type="select" placeholder="Select a tag"></input>
-                <button className="rounded-sm bg-(--primary) p-3 text-white items-center drop-shadow-lg/50">Find a Cat</button>
+                <button 
+                    className="rounded-sm bg-(--primary) p-3 text-white items-center drop-shadow-lg/50"
+                    onClick={() => getCat()}
+                >Find a Cat</button>
             </div>
             <div>
                 
