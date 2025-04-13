@@ -5,6 +5,7 @@ import "./cats.css"
 
 export default function Home() {
     const [currCat, setCat] = useState('')
+    const
 
     // function, request cats
     const request = new Request("https://cataas.com/cat", {
@@ -20,6 +21,18 @@ export default function Home() {
         }
     }
 
+    // As a user, I can search for a random cat and see it’s picture.
+
+    // As a user, I can see all of the cats I have found within this session.
+
+    // As a user, I can enrich my search with a text phrase, using the `:text` parameter.
+
+    // As a user, I can enrich my search using the tags provided by the API.
+
+    // As a user, I am delighted by an animation as the new images enter my screen.
+
+    // As a user, I can navigate to a “detail” page for a single image.
+
 
   return (
     <main className="flex flex-col gap-[32px] items-center">
@@ -29,6 +42,7 @@ export default function Home() {
             <div className="flex flex-col p-5 bg-(--background)">
                 <input className="rounded-sm" type="text" placeholder="Search"></input>
                 <input className="rounded-sm my-2" type="select" placeholder="Select a tag"></input>
+                {/* add list of available tags from api */}
                 <button 
                     className="rounded-sm bg-(--primary) p-3 text-white items-center drop-shadow-lg/50"
                     onClick={() => getCat()}
@@ -36,6 +50,7 @@ export default function Home() {
             </div>
             <div>
                 <img src={currCat}/>
+                {/* loop over found images */}
             </div>
         </div>
     </main>
