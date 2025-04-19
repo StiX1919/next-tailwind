@@ -9,6 +9,7 @@ export default function Home() {
 
     // function, request cats
     const request = new Request("https://cataas.com/cat", {
+        // adjust request to use text input if it exists
         headers: {accept: "application/json"}
     });
     const getCat = async () => {
@@ -51,6 +52,8 @@ export default function Home() {
             <div>
                 <img src={currCat}/>
                 {/* loop over found images */}
+                {/* animate images as they are added to list of cats */}
+                {/* on click, navigate to detail page of cat */}
             </div>
         </div>
     </main>
