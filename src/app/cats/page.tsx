@@ -4,8 +4,7 @@ import { useState } from "react";
 import "./cats.css"
 
 export default function Home() {
-    const [currCat, setCat] = useState('')
-    const
+    const [currCats, setCats] = useState([])
 
     // function, request cats
     const request = new Request("https://cataas.com/cat", {
@@ -16,7 +15,7 @@ export default function Home() {
         try {
             const cat = await (await fetch(request)).json()
             console.log('hit', cat)
-            setCat(cat.url)
+            setCats([...currCats, cat.url])
         } catch (error){
             console.log(error)
         }
@@ -50,7 +49,7 @@ export default function Home() {
                 >Find a Cat</button>
             </div>
             <div>
-                <img src={currCat}/>
+                {currCats.map(cat => (<img src={cat}/>))}
                 {/* loop over found images */}
                 {/* animate images as they are added to list of cats */}
                 {/* on click, navigate to detail page of cat */}
