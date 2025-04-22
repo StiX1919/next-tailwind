@@ -21,6 +21,10 @@ export default function Home() {
         }
     }
 
+    const catImgContainer = (cats) => {
+        return cats.map((catImg: Text) => (<img src={catImg}/>))
+    }
+
     // As a user, I can search for a random cat and see it’s picture.
 
     // As a user, I can see all of the cats I have found within this session.
@@ -49,7 +53,7 @@ export default function Home() {
                 >Find a Cat</button>
             </div>
             <div>
-                {currCats.map(cat => (<img src={cat}/>))}
+                {catImgContainer(currCats)}
                 {/* loop over found images */}
                 {/* animate images as they are added to list of cats */}
                 {/* on click, navigate to detail page of cat */}
