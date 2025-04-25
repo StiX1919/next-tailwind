@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "./cats.css"
+import CatCard from "./components/CatCard";
 
 export default function Home() {
     const [currCats, setCats] = useState([])
@@ -21,8 +22,8 @@ export default function Home() {
         }
     }
 
-    const catImgContainer = (cats) => {
-        return cats.map((catImg: Text) => (<img src={catImg}/>))
+    const catImgContainer = (cats: [string]) => {
+        return cats.map((catImg: string, i: number) => (<CatCard key={`cat-in:${i}`} catImg={catImg}/>))
     }
 
     // As a user, I can search for a random cat and see it’s picture.
