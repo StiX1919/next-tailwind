@@ -10,8 +10,8 @@ type CatProps = {
 const CatCard = ({ catImg } : CatProps) => {
 
   return (
-    <div className="w-2xs h-2xs bg-(--accent)">
-        <img src={catImg} alt="cat image"/>
+    <div className="flex items-center content-center size-60 bg-(--accent)">
+        <img className="max-w-full h-auto" src={catImg} alt="cat image"/>
     </div>
   );
 }
