@@ -53,7 +53,7 @@ export default function Home() {
                     onClick={() => getCat()}
                 >Find a Cat</button>
             </div>
-            <div>
+            <div className="w-full flex flex-wrap">
                 {catImgContainer(currCats)}
                 {/* loop over found images */}
                 {/* animate images as they are added to list of cats */}
